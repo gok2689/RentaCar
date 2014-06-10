@@ -36,6 +36,7 @@ namespace RentaCarDal.Concrete
             MemberToUpdate.Type = item.Type;
             MemberToUpdate.Version = item.Version;
             MemberToUpdate.Email = item.Email;
+            context.SaveChanges();
         }
 
         public void Delete(int Id)
