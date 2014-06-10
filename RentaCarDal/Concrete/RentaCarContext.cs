@@ -13,7 +13,7 @@ namespace RentaCarDal.Concrete
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Branch> Branchs { get; set; }
         public DbSet<Event> Events { get; set; }
-        public DbSet<Memeber> Members { get; set; }
+        public DbSet<Member> Members { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
 
 
@@ -22,7 +22,7 @@ namespace RentaCarDal.Concrete
             modelBuilder.Entity<Brand>().ToTable("Brand");
             modelBuilder.Entity<Branch>().ToTable("Branch");
             modelBuilder.Entity<Event>().ToTable("Event");
-            modelBuilder.Entity<Memeber>().ToTable("Member");
+            modelBuilder.Entity<Member>().ToTable("Member");
             modelBuilder.Entity<Vehicle>().ToTable("Vehicle");
         }
     }

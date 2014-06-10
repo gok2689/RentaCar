@@ -7,12 +7,12 @@ using RentaCarEntities;
 
 namespace RentaCarDal.Abstract
 {
-  public  interface IMemeber
+  public  interface IMember
     {
-      List<Memeber> GetAll();
-      Memeber Get(int Id);
-      void Add(Memeber item);
-      void Update(Memeber item);
+      List<Member> GetAll();
+      Member Get(int Id);
+      void Add(Member item);
+      void Update(Member item);
       void Delete(int Id);
       bool IsLogin(string email, string password);
       bool IsAdmin(int type);

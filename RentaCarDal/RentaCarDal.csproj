@@ -49,11 +49,12 @@
     <Compile Include="Abstract\IBranch.cs" />
     <Compile Include="Abstract\IBrand.cs" />
     <Compile Include="Abstract\IEvent.cs" />
-    <Compile Include="Abstract\IMemeber.cs" />
+    <Compile Include="Abstract\IMember.cs" />
     <Compile Include="Abstract\IVehicle.cs" />
     <Compile Include="Concrete\BranchDal.cs" />
     <Compile Include="Concrete\BrandDal.cs" />
     <Compile Include="Concrete\EventDal.cs" />
+    <Compile Include="Concrete\MemberDal.cs" />
     <Compile Include="Concrete\RentaCarContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
