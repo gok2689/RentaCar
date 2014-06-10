@@ -40,17 +40,18 @@ namespace RentaCarDal.Concrete
 
         public void Delete(int Id)
         {
-            throw new NotImplementedException();
+            context.Members.Remove(context.Members.FirstOrDefault(a => a.Id == Id));
+            context.SaveChanges();
         }
 
         public bool IsLogin(string email, string password)
         {
-            throw new NotImplementedException();
+            return context.Members.Any(a => a.Email == email && a.Password == password);
         }
 
         public bool IsAdmin(int type)
         {
-            throw new NotImplementedException();
+            return context.Members.Any(a => a.Type == type);
         }
     }
 }
