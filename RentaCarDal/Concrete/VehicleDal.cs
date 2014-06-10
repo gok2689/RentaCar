@@ -48,9 +48,21 @@ namespace RentaCarDal.Concrete
             context.SaveChanges();
         }
 
-        public List<Vehicle> Filter(string fueltype, string model, int brandId)
+      
+
+
+        public IQueryable<Filter> Filtre (params string[] parametreler)
         {
-          //return context.Vehicles.SqlQuery("Select * from vehicle v ")
+           var query = ( (from v in context.Vehicles
+                         join b in context.Brands on v.BrandId equals b.Id
+                         where parametreler.Contains(v.FuelType) & parametreler.Contains(v.Model) & parametreler.Contains(b.Name)
+                         select new Filter()
+                         {
+                             Brand = b.Name,
+                             Model = v.Model,
+                             FuelType = v.FuelType
+                         }));
+           return query;
         }
     }
 }
