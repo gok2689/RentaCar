@@ -46,11 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BranchManager.cs" />
+    <Compile Include="BrandManager.cs" />
+    <Compile Include="EventManager.cs" />
+    <Compile Include="MemberManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RentaCarDal\RentaCarDal.csproj">
+      <Project>{0646b89e-e97a-468f-b37e-cb3fa615e0ae}</Project>
+      <Name>RentaCarDal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RentaCarEntities\RentaCarEntities.csproj">
+      <Project>{fb5b34b4-377d-486c-a4bd-d5fe76c0299d}</Project>
+      <Name>RentaCarEntities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
