@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RentaCarEntities
 {
-   public class Memeber : IVersionable
+   public class Member : IVersionable
     {
         public string NameSurName { get; set; }
         public string Password { get; set; }
