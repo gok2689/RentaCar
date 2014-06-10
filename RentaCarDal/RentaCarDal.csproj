@@ -56,6 +56,7 @@
     <Compile Include="Concrete\EventDal.cs" />
     <Compile Include="Concrete\MemberDal.cs" />
     <Compile Include="Concrete\RentaCarContext.cs" />
+    <Compile Include="Concrete\VehicleDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
