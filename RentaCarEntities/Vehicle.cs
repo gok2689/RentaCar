@@ -13,6 +13,7 @@ namespace RentaCarEntities
         public string Model { get; set; }
         public string FuelType { get; set; }
         public int BranchId { get; set; }
+        public decimal PricePerDay { get; set; }
 
     }
 }
