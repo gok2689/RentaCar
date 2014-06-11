@@ -55,7 +55,7 @@ namespace RentaCarDal.Concrete
         {
          return ( (from v in context.Vehicles
                          join b in context.Brands on v.BrandId equals b.Id
-                         where parametreler.Contains(v.FuelType) & parametreler.Contains(v.Model) & parametreler.Contains(b.Name)
+                         where parametreler.Contains(v.FuelType) | parametreler.Contains(v.Model) | parametreler.Contains(b.Name)
                          select new Filter()
                          {
                              Brand = b.Name,
