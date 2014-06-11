@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -7,10 +8,33 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
+
 <body>
     @RenderBody()
-
     @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
+   @RenderSection("scripts", required: false)
 </body>
 </html>
+
+
+@*@Html.Raw(
+       new Options
+       {
+           PageSize = Model.PageSize,
+           TotalItemCount = Model.TotalItemCount,
+           CurrentPage = Model.PageNumber,
+           ItemTexts = new ItemTexts() { Next = "Next", Previous = "Previous", Page = "P" },
+           ItemIcon = new ItemIcon() { First = "icon-backward", Previous = "icon-chevron-left", Next = "icon-chevron-right", Last = "icon-forward" },
+           TooltipTitles = new TooltipTitles() { Next = "Next page", Previous = "Previous page", Page = "Go to page {0}.", First = "Go To First Page", Last = "Go To Last Page" },
+           Size = Size.normal,
+           Alignment = Alignment.centered,
+           IsShowControls = true,
+           IsShowFirstLast = true
+       },
+       new AjaxOptions
+       {
+           UpdateTargetId = "grid-list",
+           OnBegin = "beginPaging",
+           OnSuccess = "successPaging",
+           OnFailure = "failurePaging"
+       }, new { controller = "Home", action = "Index", employee_name = ViewData["employee_name"] }))*@

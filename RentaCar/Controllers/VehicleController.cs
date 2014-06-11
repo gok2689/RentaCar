@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace RentaCar.Controllers
 {
-    public class VehicleController : Controller
+    public class VehicleController : BaseController
     {
         //
         // GET: /Vehicle/
