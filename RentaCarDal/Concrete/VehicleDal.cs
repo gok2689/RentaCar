@@ -53,7 +53,7 @@ namespace RentaCarDal.Concrete
 
         public IQueryable<Filter> Filtre (params string[] parametreler)
         {
-           var query = ( (from v in context.Vehicles
+         return ( (from v in context.Vehicles
                          join b in context.Brands on v.BrandId equals b.Id
                          where parametreler.Contains(v.FuelType) & parametreler.Contains(v.Model) & parametreler.Contains(b.Name)
                          select new Filter()
@@ -62,7 +62,7 @@ namespace RentaCarDal.Concrete
                              Model = v.Model,
                              FuelType = v.FuelType
                          }));
-           return query;
+           
         }
     }
 }
