@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace RentaCarEntities
 {
@@ -10,7 +11,11 @@ namespace RentaCarEntities
     {
         public int MemberId { get; set; }
         public int VehicleId { get; set; }
+        [Required(ErrorMessage="Lütfen bir tarih belirtiniz")]
+        [Display(Name="Başlangıç Tarihi")]
         public DateTime StartDate { get; set; }
+        [Required(ErrorMessage="Lütfen bir trih seçiniz")]
+        [Display(Name="Bitiş Tarihi")]
         public DateTime EndDate { get; set; }
 
     }
