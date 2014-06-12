@@ -1,0 +1,56 @@
+﻿@model RentaCarEntities.Member 
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    @Scripts.Render("~/bundles/jquery")
+    @Styles.Render("~/Content/css")
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/Signin.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+
+        @using (Html.BeginForm("Logon","Login", FormMethod.Post,
+        new { @class = "form-signin" }))
+        {
+            <h2 class="form-signin-heading">Kullanıcı Girişi</h2>
+
+            @Html.TextBoxFor(a => a.Email,
+                     new
+                     {
+                         @class = "form-control",
+                         @placeholder = "Email",
+                         @autofocus = true
+                     })
+
+            <h4>@Html.ValidationMessageFor(a => a.Email)</h4>
+
+            @Html.PasswordFor(a => a.Password,
+                     new
+                     {
+                         @class = "form-control",
+                         @placeholder = "Şifre",
+                     })
+
+            <h4>@Html.ValidationMessageFor(a => a.Password)</h4>
+
+            <h4>@ViewBag.ErrorMessage</h4>
+
+            @*<label class="checkbox">
+                <input type="checkbox" value="remember-me"> Beni hatırla
+            </label>*@
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Giriş</button>
+        }
+
+
+    </div> <!-- /container -->
+
+</body>
+</html>

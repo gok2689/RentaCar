@@ -29,7 +29,7 @@ namespace RentaCar
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css","~/Content/bootstrap.css",
                 "~/Content/navbar-fixed-top.css",
-                "~/Content/style.css"));
+                "~/Content/style.css", "~/Content/Signin.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
