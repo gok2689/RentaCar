@@ -15,5 +15,18 @@ namespace RentaCar.Controllers
             return View();
         }
 
+        public ViewResult Aboutus()
+        {
+            return View();
+        
+        }
+
+        public ViewResult Contact()
+        {
+            return View();
+        }
+
+        
+
     }
 }
