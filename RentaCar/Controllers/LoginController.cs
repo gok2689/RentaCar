@@ -24,7 +24,7 @@ namespace RentaCar.Controllers
         {
             if (ModelState.IsValid)
             {
-                bool result = _manager.IsLogin
+                var result = _manager.IsLogin
                     (kullanici.Email,
                     kullanici.Password);
 
@@ -33,7 +33,7 @@ namespace RentaCar.Controllers
                     return RedirectToAction("Index","Home");
                 }
 
-                ViewBag.ErrorMessage = "Hatalı kullanıcı adı veya parola";
+                ViewBag.ErrorMessage = "Hatalı Email veya parola";
             }
 
             return View("Login", kullanici);
