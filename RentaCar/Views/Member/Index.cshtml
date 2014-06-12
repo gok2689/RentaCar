@@ -1,0 +1,79 @@
+﻿@model RentaCarEntities.Member
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("EditMember","Member",FormMethod.Post)) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Üye Kayıdı</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NameSurName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NameSurName)
+            @Html.ValidationMessageFor(model => model.NameSurName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Type)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Type)
+            @Html.ValidationMessageFor(model => model.Type)
+        </div>
+
+        @Html.HiddenFor(model => model.Id)
+
+        @*<div class="editor-label">
+            @Html.LabelFor(model => model.IsDeleted)
+        </div>*@
+        @*<div class="editor-field">
+            @Html.EditorFor(model => model.IsDeleted)
+            @Html.ValidationMessageFor(model => model.IsDeleted)
+        </div>*@
+
+        @*<div class="editor-label">
+            @Html.LabelFor(model => model.Version)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Version)
+            @Html.ValidationMessageFor(model => model.Version)
+        </div>*@
+        <h4>@ViewBag.Result</h4>
+        <p>
+            <input type="submit" value="Kayıt ol" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

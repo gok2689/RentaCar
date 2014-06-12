@@ -260,6 +260,7 @@
     <Content Include="Views\Home\Aboutus.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Member\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
