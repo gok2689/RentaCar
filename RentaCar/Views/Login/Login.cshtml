@@ -30,13 +30,13 @@
                          @autofocus = true
                      })
 
-            <h4>@Html.ValidationMessageFor(a => a.Email)</h4>
+            <*h4>@Html.ValidationMessageFor(a => a.Email)</h4>
 
             @Html.PasswordFor(a => a.Password,
                      new
                      {
                          @class = "form-control",
-                         @placeholder = "Şifre",
+                         @placeholder = "Şifre"
                      })
 
             <h4>@Html.ValidationMessageFor(a => a.Password)</h4>
