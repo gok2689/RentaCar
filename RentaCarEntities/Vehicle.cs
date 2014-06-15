@@ -7,17 +7,25 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RentaCarEntities
 {
-  public  class Vehicle : IVersionable
-    {   [Required(ErrorMessage="Bir plaka giriniz")]
+    public partial class Vehicle
+    {
+        public Vehicle()
+        {
+            this.Event = new HashSet<Event>();
+        }
+
+        public int Id { get; set; }
+        public bool IsDeleted { get; set; }
+        public System.DateTime Version { get; set; }
         public string Plate { get; set; }
         public int BrandId { get; set; }
-        [Required(ErrorMessage="Bir model belirtiniz")]
         public string Model { get; set; }
-        [Required(ErrorMessage="Bir yakıt tipi belirtiniz")]
         public string FuelType { get; set; }
         public int BranchId { get; set; }
-        
         public decimal PricePerDay { get; set; }
 
+        public virtual Branch Branch { get; set; }
+        public virtual Brand Brand { get; set; }
+        public virtual ICollection<Event> Event { get; set; }
     }
 }

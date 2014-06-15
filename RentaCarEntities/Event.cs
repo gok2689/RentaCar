@@ -7,18 +7,21 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RentaCarEntities
 {
-  public  class Event : IVersionable
+    public partial class Event
     {
+        public int Id { get; set; }
+        public bool IsDeleted { get; set; }
+        public System.DateTime Version { get; set; }
         public int MemberId { get; set; }
         public int VehicleId { get; set; }
-        [Required(ErrorMessage="Lütfen bir tarih belirtiniz")]
-        [Display(Name="Başlangıç Tarihi")]
-        [DataType(DataType.Date)]
-        public DateTime StartDate { get; set; }
-        [Required(ErrorMessage="Lütfen bir trih seçiniz")]
-        [Display(Name="Bitiş Tarihi")]
-        [DataType(DataType.Date)]
-        public DateTime EndDate { get; set; }
+        [DataType(DataType.DateTime)]
+        public System.DateTime StartDate { get; set; }
+        [DataType(DataType.DateTime)]
+        public System.DateTime EndDate { get; set; }
 
+        public virtual Member Member { get; set; }
+        public virtual Vehicle Vehicle { get; set; }
     }
+
+    
 }

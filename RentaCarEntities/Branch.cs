@@ -7,11 +7,17 @@ using System.ComponentModel.DataAnnotations;
 
 namespace RentaCarEntities
 {
-  public  class Branch : IVersionable
-    {   [Required(ErrorMessage="Bir şube adı belirtiniz")]
+    public partial class Branch
+    {
+        public Branch()
+        {
+            this.Vehicle = new HashSet<Vehicle>();
+        }
+
+        public int Id { get; set; }
         public string Name { get; set; }
-        [Required(ErrorMessage="Şube kodu gerekli")]
         public string Code { get; set; }
 
+        public virtual ICollection<Vehicle> Vehicle { get; set; }
     }
 }
