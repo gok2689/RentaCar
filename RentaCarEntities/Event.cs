@@ -9,6 +9,11 @@ namespace RentaCarEntities
 {
     public partial class Event
     {
+        public Event()
+        {
+            Version = DateTime.Now;
+            IsDeleted = false;
+        }
         public int Id { get; set; }
         public bool IsDeleted { get; set; }
         public System.DateTime Version { get; set; }

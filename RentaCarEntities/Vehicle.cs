@@ -12,6 +12,8 @@ namespace RentaCarEntities
         public Vehicle()
         {
             this.Event = new HashSet<Event>();
+            Version = DateTime.Now;
+            IsDeleted = false;
         }
 
         public int Id { get; set; }

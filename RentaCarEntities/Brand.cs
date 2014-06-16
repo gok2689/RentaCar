@@ -12,6 +12,8 @@ namespace RentaCarEntities
         public Brand()
         {
             this.Vehicle = new HashSet<Vehicle>();
+            Version = DateTime.Now;
+            IsDeleted = false;
         }
 
         public int Id { get; set; }
