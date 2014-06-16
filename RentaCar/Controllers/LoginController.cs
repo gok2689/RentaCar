@@ -34,9 +34,21 @@ namespace RentaCar.Controllers
                 }
 
                 ViewBag.ErrorMessage = "Hatalı Email veya parola";
+
             }
+           
 
             return View("Login", kullanici);
+            
+            //if (ModelState.IsValid)
+            //{
+            //    var result = _manager.IsAdmin(kullanici.Type);
+            //    if (result)
+            //    {
+            //        return RedirectToAction("Index", "Admin");
+            //    }
+                
+            //}
         
         
         }

@@ -25,7 +25,12 @@ namespace RentaCar
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
            
-            //Database.SetInitializer<RentaCarContext>(null);
+            Database.SetInitializer<RentaCarContext>(null);
+            //HttpContext.Current.Session["Permission"] = 0;
+        }
+        protected void Session_Start()
+        {
+            Session["Permission"] = 0;
         }
     }
 }
