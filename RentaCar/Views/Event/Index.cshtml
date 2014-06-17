@@ -20,11 +20,26 @@
         $("#datepicker1").datepicker({ dateFormat: 'dd-mm-yy' });
     });
 </script>
+@using (Ajax.BeginForm("Fitre", "Event", new AjaxOptions()
+{
+    HttpMethod = "POST",
+    UpdateTargetId = "filtre",
+    OnFailure = "alert('hata meydana geldi');"
+
+}))
+{
+
+    <input type="text" id="searchText" name="searchText" />
+    <input type="submit" value="Filtrele" />
+
+
+}
 
 @using (Html.BeginForm("CreateEvent", "Event", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
+    
 
     <fieldset>
         
