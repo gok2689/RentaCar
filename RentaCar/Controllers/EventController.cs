@@ -11,7 +11,7 @@ namespace RentaCar.Controllers
     public class EventController : BaseController
     {
         EventManager _manager = new EventManager();
-
+        VehicleManager _vehicleManager = new VehicleManager();
         public ActionResult Index()
         {
             return View();
@@ -37,10 +37,11 @@ namespace RentaCar.Controllers
         
         
         }
-        public PartialViewResult Filtre(RentaCarEntities.Filter filtre)
+        [HttpPost]
+        public PartialViewResult Filtre(string searchText)
         {
-            return PartialView();
-        
+            return PartialView(_vehicleManager.Filtre(searchText));
+
         }
 
     }
