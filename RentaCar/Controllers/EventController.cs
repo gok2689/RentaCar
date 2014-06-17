@@ -37,6 +37,11 @@ namespace RentaCar.Controllers
         
         
         }
+        public PartialViewResult Filtre(RentaCarEntities.Filter filtre)
+        {
+            return PartialView();
+        
+        }
 
     }
 }

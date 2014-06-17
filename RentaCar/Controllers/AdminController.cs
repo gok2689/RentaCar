@@ -11,29 +11,14 @@ namespace RentaCar.Controllers
 {
     public class AdminController : BaseController
     {
-        
 
+        [RentaCar.Functions.Permissons]
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Adminmi(Member tip)
-        {
-
-           
-            MemberManager _manager =new MemberManager();
-            var kultip = tip.Type.Equals(0);
-            if (kultip)
-            {
-                return View("Index", tip);
-            }
-           
-            ViewBag.Mesaj = "Admin hoşgeldin";
-            return RedirectToAction("Index", "Login");
-        
-        
-        }
+       
 
     }
 }
