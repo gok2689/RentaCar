@@ -37,9 +37,34 @@ namespace RentaCarBll
             _dal.Delete(Id);
         }
 
-        public IQueryable<Filter> Filtre(params string[] parametreler)
+       
+       public List<Vehicle> Filtre(string searchText)
         {
-            return _dal.Filtre(parametreler);
+            BrandManager _brandManager=new BrandManager();
+            BranchManager _branchManager = new BranchManager();
+
+            var query = (from v in _dal.GetAll()
+                         join b in _brandManager.GetAll() on v.BrandId equals b.Id
+                         join br in _branchManager.Getall() on v.BranchId equals br.Id
+                         select new Vehicle
+                         {
+                             _brandName = b.Name,
+                             _branchName=br.Name,
+                             
+                             BranchId = v.BranchId,
+                             Event = v.Event,
+                             FuelType = v.FuelType,
+                             Id = v.Id,
+                             IsDeleted = v.IsDeleted,
+                             Model = v.Model,
+                             Plate = v.Plate,
+                             PricePerDay = v.PricePerDay,
+                             Version = v.Version
+                 
+                         }).ToList();
+
+            return query.Where(m => m._brandName.Contains(searchText) || m.FuelType.Contains(searchText) || m.Model.Contains(searchText)).ToList();
+
         }
     }
 }
