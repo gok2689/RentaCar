@@ -4,20 +4,20 @@
 <table id="myTable" class="tablesorter">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(a => a.First().Id)</th>
+            <th>@Html.DisplayNameFor(a => a.First()._branchName)</th>
             <th>@Html.DisplayNameFor(a => a.First().Model)</th>
             <th>@Html.DisplayNameFor(a => a.First().FuelType)</th>
-            <th>@Html.DisplayNameFor(a => a.First().Brand)</th>
+            <th>@Html.DisplayNameFor(a => a.First()._brandName)</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.Id</td>
+                <td>@item._branchName</td>
                 <td>@item.Model</td>
                 <td>@item.FuelType</td>
-                <td>@item.Brand</td>
+                <td>@item._brandName</td>
                 <td>
                   
                 </td>
