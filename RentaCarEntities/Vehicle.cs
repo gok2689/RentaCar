@@ -26,8 +26,8 @@ namespace RentaCarEntities
         public int BranchId { get; set; }
         public decimal PricePerDay { get; set; }
 
-        public virtual Branch Branch { get; set; }
-        public virtual Brand Brand { get; set; }
+        public string _brandName { get; set; }
+        public string _branchName { get; set; }
         public virtual ICollection<Event> Event { get; set; }
     }
 }
