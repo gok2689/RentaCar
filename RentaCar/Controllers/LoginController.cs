@@ -1,4 +1,4 @@
-﻿
+﻿using RentaCar.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using RentaCarEntities;
 using RentaCarBll;
+using System.Web.Security;
 
 namespace RentaCar.Controllers
 {
@@ -28,29 +29,18 @@ namespace RentaCar.Controllers
                     (kullanici.Email,
                     kullanici.Password);
 
+                
                 if (result)
                 {
-                    return RedirectToAction("Index","Home");
+                    FormsAuthentication.SetAuthCookie(kullanici.Email, true);
+                    Session["UserName"] = kullanici.Email;
+                    return RedirectToAction("UserIndex", "Member");
+
                 }
 
                 ViewBag.ErrorMessage = "Hatalı Email veya parola";
-
             }
-           
-
             return View("Login", kullanici);
-            
-            //if (ModelState.IsValid)
-            //{
-            //    var result = _manager.IsAdmin(kullanici.Type);
-            //    if (result)
-            //    {
-            //        return RedirectToAction("Index", "Admin");
-            //    }
-                
-            //}
-        
-        
         }
 
         

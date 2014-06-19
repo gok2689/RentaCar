@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace RentaCar.Controllers
 {
@@ -18,6 +19,13 @@ namespace RentaCar.Controllers
             return View();
         }
 
+        public ActionResult LogoutAdmin()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+
+        //public ActionResult Create
        
 
     }

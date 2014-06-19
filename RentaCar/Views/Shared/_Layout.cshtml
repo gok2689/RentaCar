@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <title>OtoKirala | @Session["UserName"]</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -27,20 +27,10 @@
                     <li>@Html.ActionLink("Anasayfa", "Index", "Home")</li>
                     <li>@Html.ActionLink("Hakkımızda", "Aboutus", "Home")</li>
                     <li>@Html.ActionLink("İletişim", "Contact", "Home")</li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Olaylar <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a</li>
-                            <li>@Html.ActionLink("Oto Kirala", "Index", "Event")</li>
-                            <li>@Html.ActionLink("Şubelerimiz", "Index", "Branch")</li>
-                            <li class="divider"></li>
-                            <li class="dropdown-header">Nav header</li>
-                            <li></li>
-                            <li></li>
-                        </ul>
-                    </li>
+              
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <li>@Session["UserName"]</li>
                     <li>@Html.ActionLink("Giriş Yap", "Login", "Login")</li>
                     <li>@Html.ActionLink("Kayıt ol", "Index", "Member")</li>
 

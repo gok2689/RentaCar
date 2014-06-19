@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using RentaCarBll;
+using System.Web.Security;
 
 namespace RentaCar.Controllers
 {
@@ -29,6 +30,19 @@ namespace RentaCar.Controllers
         
         
         }
+        public ActionResult UserIndex()
+        {
+            return View();
+        
+        
+        }
 
+        public ActionResult LogoutUser()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        
+        
+        }
     }
 }
