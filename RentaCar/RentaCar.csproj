@@ -259,6 +259,7 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\myscripts.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Vendors\boostrap3-typeahead\bootstrap3-typeahead.js" />
     <Content Include="Vendors\boostrap3-typeahead\bootstrap3-typeahead.min.js" />
@@ -1501,9 +1502,10 @@
     <Content Include="Vendors\uniform\www\CNAME" />
     <Content Include="Vendors\uniform\www\downloads\.keep" />
     <Content Include="Vendors\uniform\www\stylesheets\multiple-themes.scss" />
-    <Content Include="Views\Event\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Event\Filtre.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Event\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -6,85 +6,36 @@
 }
 
 
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-<link rel="stylesheet" href="http://resources/demos/style.css">
-<script>
-    $(function () {
-        $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' });
-    });
-</script>
-<script>
-    $(function () {
-        $("#datepicker1").datepicker({ dateFormat: 'dd-mm-yy' });
-    });
-</script>
 
-@using (Html.BeginForm("CreateEvent", "Event", FormMethod.Post))
-{
+
+@using (Html.BeginForm("CreateEvent","Event",FormMethod.Post)) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-    
 
     <fieldset>
-        
-
-        @*<div class="editor-label">
-            @Html.LabelFor(model => model.MemberId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.MemberId)
-            @Html.ValidationMessageFor(model => model.MemberId)
-        </div>*@
-
-        @*<div class="editor-label">
-            @Html.LabelFor(model => model.VehicleId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.VehicleId)
-            @Html.ValidationMessageFor(model => model.VehicleId)
-        </div>*@
 
         <div class="editor-label">
             @Html.LabelFor(model => model.StartDate)
         </div>
         <div class="editor-field">
-            @Html.TextBoxFor(model => model.StartDate, new {Id="datepicker" })
+            @Html.EditorFor(model => model.StartDate)
             @Html.ValidationMessageFor(model => model.StartDate)
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.EndDate)
         </div>
-        <div class="editor-field"id="datepicker">
-            @Html.TextBoxFor(model => model.EndDate, new { id = "datepicker1" })
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EndDate)
             @Html.ValidationMessageFor(model => model.EndDate)
         </div>
-
-        @*<div class="editor-label">
-            @Html.LabelFor(model => model.IsDeleted)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.IsDeleted)
-            @Html.ValidationMessageFor(model => model.IsDeleted)
-        </div>*@
-
-        @*<div class="editor-label">
-            @Html.LabelFor(model => model.Version)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Version)
-            @Html.ValidationMessageFor(model => model.Version)
-        </div>*@
 
         <p>
             <input type="submit" value="Onayla" />
         </p>
-        @ViewBag.Result;
     </fieldset>
 }
-@using (Ajax.BeginForm("Filtre", "Event", new AjaxOptions()
+@using (Ajax.BeginForm("Fitre", "Event", new AjaxOptions()
 {
     HttpMethod = "POST",
     UpdateTargetId = "filtre",
@@ -94,14 +45,16 @@
 {
 
     <input type="text" id="searchText" name="searchText" />
+    <br />
     <input type="submit" value="Filtrele" />
 
 
 }
 
 
-
-@*@section Scripts {
+@section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}*@
-
+@*<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />*@
+@*<script src="~/Scripts/jquery-ui-1.8.24.js"></script>*@
+<script src="~/Scripts/myscripts.js"></script>
+}
