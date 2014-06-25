@@ -19,9 +19,11 @@ namespace RentaCarEntities
         public System.DateTime Version { get; set; }
         public int MemberId { get; set; }
         public int VehicleId { get; set; }
-        [DataType(DataType.DateTime)]
+        
+
         public System.DateTime StartDate { get; set; }
-        [DataType(DataType.DateTime)]
+       
+      
         public System.DateTime EndDate { get; set; }
 
         public virtual Member Member { get; set; }

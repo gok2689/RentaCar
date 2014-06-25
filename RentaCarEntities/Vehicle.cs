@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RentaCarEntities
 {
@@ -26,7 +27,9 @@ namespace RentaCarEntities
         public int BranchId { get; set; }
         public decimal PricePerDay { get; set; }
 
+        [NotMapped]
         public string _brandName { get; set; }
+        [NotMapped]
         public string _branchName { get; set; }
         public virtual ICollection<Event> Event { get; set; }
     }
