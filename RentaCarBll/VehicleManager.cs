@@ -63,7 +63,7 @@ namespace RentaCarBll
                  
                          }).ToList();
 
-            return query.Where(m => m._brandName.Contains(searchText) || m.FuelType.Contains(searchText) || m.Model.Contains(searchText)).ToList();
+            return query.Where(m => m._brandName.Contains(searchText) || m.FuelType.Contains(searchText) || m.Model.Contains(searchText) && m.IsRezerved == false).ToList();
 
         }
     }
