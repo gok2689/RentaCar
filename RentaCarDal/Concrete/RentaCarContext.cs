@@ -15,6 +15,7 @@ namespace RentaCarDal.Concrete
         public DbSet<Event> Events { get; set; }
         public DbSet<Member> Members { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -24,6 +25,7 @@ namespace RentaCarDal.Concrete
             modelBuilder.Entity<Event>().ToTable("Event");
             modelBuilder.Entity<Member>().ToTable("Member");
             modelBuilder.Entity<Vehicle>().ToTable("Vehicle");
+            modelBuilder.Entity<Notification>().ToTable("Notification");
         }
     }
 

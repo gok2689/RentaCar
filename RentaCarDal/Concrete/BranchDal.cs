@@ -13,12 +13,12 @@ namespace RentaCarDal.Concrete
       RentaCarContext context = new RentaCarContext();
         public List<Branch> Getall()
         {
-            return context.Branchs.Where(a => a.IsDeleted == false).ToList();
+            return context.Branchs.ToList();
         }
 
         public Branch Get(int Id)
         {
-            return context.Branchs.FirstOrDefault(a => a.IsDeleted == false && a.Id == Id);
+            return context.Branchs.FirstOrDefault(a=> a.Id == Id);
         }
 
         public void Add(Branch item)
@@ -29,10 +29,10 @@ namespace RentaCarDal.Concrete
 
         public void Update(Branch item)
         {
-            Branch ObjectToUpdate = context.Branchs.FirstOrDefault(a => a.Id == item.Id && a.IsDeleted == false);
+            Branch ObjectToUpdate = context.Branchs.FirstOrDefault(a => a.Id == item.Id );
             ObjectToUpdate.Name = item.Name;
             ObjectToUpdate.Code = item.Code;
-            ObjectToUpdate.Version = item.Version;
+           
             context.SaveChanges();
         }
 

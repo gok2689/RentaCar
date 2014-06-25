@@ -50,11 +50,13 @@
     <Compile Include="Abstract\IBrand.cs" />
     <Compile Include="Abstract\IEvent.cs" />
     <Compile Include="Abstract\IMember.cs" />
+    <Compile Include="Abstract\INotification.cs" />
     <Compile Include="Abstract\IVehicle.cs" />
     <Compile Include="Concrete\BranchDal.cs" />
     <Compile Include="Concrete\BrandDal.cs" />
     <Compile Include="Concrete\EventDal.cs" />
     <Compile Include="Concrete\MemberDal.cs" />
+    <Compile Include="Concrete\NotificationDal.cs" />
     <Compile Include="Concrete\RentaCarContext.cs" />
     <Compile Include="Concrete\VehicleDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

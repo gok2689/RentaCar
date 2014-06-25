@@ -31,7 +31,7 @@ namespace RentaCarDal.Concrete
         {
             Event ObjectToUpdate = context.Events.FirstOrDefault(a => a.Id == item.Id && a.IsDeleted == false);
             ObjectToUpdate.MemberId = item.MemberId;
-            ObjectToUpdate.VehicleId = item.VehicleId;
+            ObjectToUpdate.MemberId = item.MemberId;
             ObjectToUpdate.Version = item.Version;
             ObjectToUpdate.StartDate = item.StartDate;
             ObjectToUpdate.EndDate = item.EndDate;

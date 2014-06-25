@@ -14,7 +14,7 @@ namespace RentaCarDal.Concrete
 
         public List<Vehicle> GetAll()
         {
-            return context.Vehicles.Where(a => a.IsDeleted == false).ToList();
+            return context.Vehicles.Where(a => a.IsDeleted == false && a.IsRezerved == false).ToList();
         }
 
         public Vehicle Get(int Id)

@@ -14,7 +14,7 @@ namespace RentaCarDal.Abstract
       void Add(Vehicle item);
       void Update(Vehicle item);
       void Delete(int Id);
-      List<Vehicle> Filter(string fueltype, string model, int brandId);
+  
 
     }
 }
