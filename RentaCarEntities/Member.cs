@@ -20,6 +20,7 @@ namespace RentaCarEntities
         public int Id { get; set; }
         public bool IsDeleted { get; set; }
         public System.DateTime Version { get; set; }
+       [Display(Name="Ad Soyad")]
         public string NameSurName { get; set; }
        [Required(ErrorMessage="Lütfen bir şifre giriniz")]
         public string Password { get; set; }
