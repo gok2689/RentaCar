@@ -38,31 +38,7 @@
             @Html.ValidationMessageFor(model => model.Email)
         </div>
 
-        @*<div class="editor-label">
-            @Html.LabelFor(model => model.Type)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Type)
-            @Html.ValidationMessageFor(model => model.Type)
-        </div>
-
-        @Html.HiddenFor(model => model.Id)*@
-
-        @*<div class="editor-label">
-            @Html.LabelFor(model => model.IsDeleted)
-        </div>*@
-        @*<div class="editor-field">
-            @Html.EditorFor(model => model.IsDeleted)
-            @Html.ValidationMessageFor(model => model.IsDeleted)
-        </div>*@
-
-        @*<div class="editor-label">
-            @Html.LabelFor(model => model.Version)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Version)
-            @Html.ValidationMessageFor(model => model.Version)
-        </div>*@
+       
         <h4>@ViewBag.Result</h4>
         <p>
             <input type="submit" value="Kayıt ol" />
@@ -71,7 +47,7 @@
 }
 
 <div>
-    @Html.ActionLink("Geri dön", "Index")
+    @Html.ActionLink("Geri dön", "UserIndex")
 </div>
 
 @section Scripts {

@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<RentaCarEntities.Vehicle>
-
+<link href="~/Content/style.css" rel="stylesheet" />
 
 <table id="myTable" class="tablesorter">
     <thead>
@@ -8,6 +8,8 @@
             <th>@Html.DisplayNameFor(a => a.First().Model)</th>
             <th>@Html.DisplayNameFor(a => a.First().FuelType)</th>
             <th>@Html.DisplayNameFor(a => a.First()._brandName)</th>
+            <th>@Html.DisplayNameFor(a=> a.First().PricePerDay)</th>
+            <th>@Html.Label("Rezervasyon")</th>
         </tr>
     </thead>
     <tbody>
@@ -18,12 +20,20 @@
                 <td>@item.Model</td>
                 <td>@item.FuelType</td>
                 <td>@item._brandName</td>
-                <td>
-                  
-                </td>
+                <td>@item.PricePerDay</td>
+                <td>@Html.ActionLink("Rezervasyon yap", "Rezervasyon", 
+                new { @class = "btn btn-xs btn-success" })</td>
             </tr>
         }
     </tbody>
+    
 
 </table>
+@*<button type="button" class="btn btn-xs btn-success" value="rezervasyon">Rezervasyon yap</button>*@
 
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}

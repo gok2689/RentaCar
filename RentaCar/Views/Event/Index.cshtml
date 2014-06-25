@@ -6,36 +6,11 @@
 }
 
 
+<link href="~/Content/datepicker.css" rel="stylesheet" />
 
 
-@using (Html.BeginForm("CreateEvent","Event",FormMethod.Post)) {
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-
-    <fieldset>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.StartDate)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.StartDate)
-            @Html.ValidationMessageFor(model => model.StartDate)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.EndDate)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.EndDate)
-            @Html.ValidationMessageFor(model => model.EndDate)
-        </div>
-
-        <p>
-            <input type="submit" value="Onayla" />
-        </p>
-    </fieldset>
 }
-@using (Ajax.BeginForm("Fitre", "Event", new AjaxOptions()
+@using (Ajax.BeginForm("Filtre", "Event", new AjaxOptions()
 {
     HttpMethod = "POST",
     UpdateTargetId = "filtre",
@@ -43,18 +18,93 @@
 
 }))
 {
-
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <fieldset>
+    <div>
     <input type="text" id="searchText" name="searchText" />
     <br />
-    <input type="submit" value="Filtrele" />
+    <input type="submit" value="Ara" />
+   </div>
+    </fieldset>
+
+  
 
 
 }
 
 
-@section Scripts {
+@*@section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-@*<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />*@
-@*<script src="~/Scripts/jquery-ui-1.8.24.js"></script>*@
-<script src="~/Scripts/myscripts.js"></script>
-}
+
+}*@
+<script src="~/Scripts/bootstrap-datepicker.js"></script>
+<script src="~/Scripts/jquery-ui-1.8.24.js"></script>
+<script src="~/Scripts/jquery-2.1.1.js"></script>
+<script>
+    if (top.location != location) {
+        top.location.href = document.location.href;
+    }
+    $(function () {
+        window.prettyPrint && prettyPrint();
+        $('#dp1').datepicker({
+            format: 'dd.mm.yyyy'
+        });
+        $('#dp2').datepicker();
+        $('#dp3').datepicker();
+        $('#dp3').datepicker();
+        $('#dpYears').datepicker();
+        $('#dpMonths').datepicker();
+
+
+        var startDate = new Date(2012, 1, 20);
+        var endDate = new Date(2012, 1, 25);
+        $('#dp4').datepicker()
+            .on('changeDate', function (ev) {
+                if (ev.date.valueOf() > endDate.valueOf()) {
+                    $('#alert').show().find('strong').text('The start date can not be greater then the end date');
+                } else {
+                    $('#alert').hide();
+                    startDate = new Date(ev.date);
+                    $('#startDate').text($('#dp4').data('date'));
+                }
+                $('#dp4').datepicker('hide');
+            });
+        $('#dp5').datepicker()
+            .on('changeDate', function (ev) {
+                if (ev.date.valueOf() < startDate.valueOf()) {
+                    $('#alert').show().find('strong').text('The end date can not be less then the start date');
+                } else {
+                    $('#alert').hide();
+                    endDate = new Date(ev.date);
+                    $('#endDate').text($('#dp5').data('date'));
+                }
+                $('#dp5').datepicker('hide');
+            });
+
+        // disabling dates
+        var nowTemp = new Date();
+        var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+
+        var checkin = $('#dpd1').datepicker({
+            onRender: function (date) {
+                return date.valueOf() < now.valueOf() ? 'disabled' : '';
+            }
+        }).on('changeDate', function (ev) {
+            if (ev.date.valueOf() > checkout.date.valueOf()) {
+                var newDate = new Date(ev.date)
+                newDate.setDate(newDate.getDate() + 1);
+                checkout.setValue(newDate);
+            }
+            checkin.hide();
+            $('#dpd2')[0].focus();
+        }).data('datepicker');
+        var checkout = $('#dpd2').datepicker({
+            onRender: function (date) {
+                return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+            }
+        }).on('changeDate', function (ev) {
+            checkout.hide();
+        }).data('datepicker');
+    });
+</script>

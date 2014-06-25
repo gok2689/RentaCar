@@ -43,6 +43,12 @@ namespace RentaCar.Controllers
             return PartialView(_vehicleManager.Filtre(searchText));
 
         }
+        [HttpGet]
+        public ViewResult Rezervasyon()
+        {
+            return View();
+        
+        }
 
     }
 }
