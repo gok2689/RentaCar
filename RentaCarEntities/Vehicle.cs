@@ -15,6 +15,7 @@ namespace RentaCarEntities
             this.Event = new HashSet<Event>();
             Version = DateTime.Now;
             IsDeleted = false;
+            IsRezerved = false;
         }
 
         public int Id { get; set; }
@@ -36,6 +37,7 @@ namespace RentaCarEntities
         [NotMapped]
         [Display(Name="Şube")]
         public string _branchName { get; set; }
+        public bool IsRezerved { get; set; }
         public virtual ICollection<Event> Event { get; set; }
     }
 }
