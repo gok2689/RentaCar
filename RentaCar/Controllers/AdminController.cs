@@ -12,7 +12,7 @@ namespace RentaCar.Controllers
 {
     public class AdminController : BaseController
     {
-
+        VehicleManager _VehcileManager = new VehicleManager();
         [RentaCar.Functions.Permissons]
         public ActionResult Index()
         {
@@ -25,7 +25,11 @@ namespace RentaCar.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        //public ActionResult Create
+        public ActionResult GetVehicle()
+        {
+            return View(_VehcileManager.GetAll().ToList());
+        
+        }
        
 
     }

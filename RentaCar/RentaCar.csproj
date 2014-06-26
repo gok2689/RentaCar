@@ -1332,7 +1332,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Aboutus.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
@@ -1510,10 +1509,11 @@
     <Content Include="Views\Shared\_LayoutUser.cshtml" />
     <Content Include="Views\Member\UserIndex.cshtml" />
     <Content Include="Views\Event\Rezervasyon.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Admin\GetVehicle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="GorselResim\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
