@@ -44,9 +44,26 @@ namespace RentaCar.Controllers
 
         }
         [HttpGet]
-        public ViewResult Rezervasyon()
+        public ActionResult Rezervasyon(int Id)
         {
-            return View();
+            return View(_vehicleManager.Get(Id));
+        
+        }
+        [HttpPost]
+        public ActionResult RezervasyonYap(Event eve)
+        {
+            if (ModelState.IsValid)
+            {
+
+                Session["Info"] = eve.Id;
+                _manager.Add(eve);
+                ViewBag.Bildiri = "İşleminiz Onay için beklemektedir Bilgileriniz Mail Adressinize gönderilecektir ";
+                RedirectToAction("UserIndex", "Member");
+            }
+            ViewBag.Hata = "Bir hata oluşru";
+            return View("Rezervasyon");
+            
+        
         
         }
 

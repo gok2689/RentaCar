@@ -4,6 +4,7 @@
 <table id="myTable" class="tablesorter">
     <thead>
         <tr>
+            
             <th>@Html.DisplayNameFor(a => a.First()._branchName)</th>
             <th>@Html.DisplayNameFor(a => a.First().Model)</th>
             <th>@Html.DisplayNameFor(a => a.First().FuelType)</th>
@@ -16,6 +17,7 @@
         @foreach (var item in Model)
         {
             <tr>
+                
                 <td>@item._branchName</td>
                 <td>@item.Model</td>
                 <td>@item.FuelType</td>
@@ -29,6 +31,8 @@
     
 
 </table>
+
+
 @*<button type="button" class="btn btn-xs btn-success" value="rezervasyon">Rezervasyon yap</button>*@
 
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />

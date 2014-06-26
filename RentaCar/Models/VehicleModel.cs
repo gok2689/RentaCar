@@ -8,7 +8,8 @@ namespace RentaCar.Models
 {
     public class VehicleModel
     {
-        public List<Vehicle> Vehicles { get; set; }
+        public Vehicle Vehicles { get; set; }
+        public Event Events { get; set; }
         public PagingInfo PagingInfo { get; set; }
 
     }

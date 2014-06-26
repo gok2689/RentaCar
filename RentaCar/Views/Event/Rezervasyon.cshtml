@@ -1,4 +1,4 @@
-﻿@model RentaCarEntities.Event
+﻿@model RentaCar.Models.VehicleModel
 
 @{
     ViewBag.Title = "Rezervasyon";
@@ -12,65 +12,34 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Event</legend>
+        <legend>Rezervasyon için Tarih Seçiniz</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.IsDeleted)
+            @Html.LabelFor(model => model.Events.StartDate)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.IsDeleted)
-            @Html.ValidationMessageFor(model => model.IsDeleted)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Version)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.Version)
-            @Html.ValidationMessageFor(model => model.Version)
+            @Html.EditorFor(model => model.Events.StartDate)
+            @Html.ValidationMessageFor(model => model.Events.StartDate)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.MemberId)
+            @Html.LabelFor(model => model.Events.EndDate)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.MemberId)
-            @Html.ValidationMessageFor(model => model.MemberId)
+            @Html.EditorFor(model => model.Events.EndDate)
+            @Html.ValidationMessageFor(model => model.Events.EndDate)
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.VehicleId)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.VehicleId)
-            @Html.ValidationMessageFor(model => model.VehicleId)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.StartDate)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.StartDate)
-            @Html.ValidationMessageFor(model => model.StartDate)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.EndDate)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.EndDate)
-            @Html.ValidationMessageFor(model => model.EndDate)
-        </div>
-
+        @Html.Hidden("Id", Model.Vehicles.Id)
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Rezervasyon Yap" />
         </p>
     </fieldset>
 }
-
+@ViewBag.Hata
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Üye Sayfasına Dön", "Index")
 </div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
