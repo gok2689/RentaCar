@@ -10,77 +10,49 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Version)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Plate)
-        </th>
-        
-        <th>
-            @Html.DisplayNameFor(model => model.Model)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FuelType)
-        </th>
-        
-        <th>
-            @Html.DisplayNameFor(model => model.PricePerDay)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model._brandName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model._branchName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsRezerved)
-        </th>
-        <th></th>
-    </tr>
+<link href="~/Content/style.css" rel="stylesheet" />
 
-@foreach (var item in Model) {
+<table id="myTable" class="tablesorter">
+    <thead>
+        <tr>
+
+            <th>@Html.DisplayNameFor(a => a.First()._branchName)</th>
+            <th>@Html.DisplayNameFor(a => a.First().Model)</th>
+            <th>@Html.DisplayNameFor(a => a.First().FuelType)</th>
+            <th>@Html.DisplayNameFor(a => a.First()._brandName)</th>
+            <th>@Html.DisplayNameFor(a => a.First().PricePerDay)</th>
+            <th>@Html.DisplayNameFor(a=> a.First().Plate)</th>
+            <th>@Html.DisplayNameFor(a=> a.First().IsRezerved)</th>
+            <th>@Html.DisplayNameFor(a=> a.First().Version)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+{
     <tr>
+
+        <td>@item._branchName</td>
+        <td>@item.Model</td>
+        <td>@item.FuelType</td>
+        <td>@item._brandName</td>
+        <td>@item.PricePerDay</td>
+        <td>@item.Plate</td>
+        <td>@item.IsRezerved</td>
+        <td>@item.Version</td>
         <td>
-            @Html.DisplayFor(modelItem => item.IsDeleted)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Version)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Plate)
-        </td>
-        
-        <td>
-            @Html.DisplayFor(modelItem => item.Model)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FuelType)
-        </td>
-     
-        <td>
-            @Html.DisplayFor(modelItem => item.PricePerDay)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item._brandName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item._branchName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsRezerved)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-         
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
         </td>
     </tr>
+                    
+        
 }
+    </tbody>
+
 
 </table>
+        
+}
+
+
