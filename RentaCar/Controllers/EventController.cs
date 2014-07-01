@@ -62,7 +62,7 @@ namespace RentaCar.Controllers
             {
                 model.VehicleId = vehicleId;
              
-                Session["Info"] = "Hadi olacak inş. :D";
+
                 _manager.Add(model);
                 ViewBag.Bildiri = "İşleminiz Onay için beklemektedir Bilgileriniz Mail Adressinize gönderilecektir ";
                 RedirectToAction("UserIndex", "Member");
