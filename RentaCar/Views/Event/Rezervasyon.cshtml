@@ -1,4 +1,4 @@
-﻿@model RentaCar.Models.VehicleModel
+﻿@model RentaCarEntities.Event
 
 @{
     ViewBag.Title = "Rezervasyon";
@@ -7,27 +7,30 @@
 
 <h2>Rezervasyon</h2>
 
-@using (Html.BeginForm("RezervasyonYap","Event",FormMethod.Post)) {
+@using (Html.BeginForm("RezervasyonYap", "Event", new { vehicleId = Request.QueryString["vehicleId"] }, FormMethod.Post))
+{
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
+    //Vehicle idsini göndermen için
+   
     <fieldset>
         <legend>Rezervasyon için Tarih Seçiniz</legend>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Events.StartDate)
+            @Html.LabelFor(model => model.StartDate)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Events.StartDate)
-            @Html.ValidationMessageFor(model => model.Events.StartDate)
+            @Html.EditorFor(model => model.StartDate)
+            @Html.ValidationMessageFor(model => model.StartDate)
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Events.EndDate)
+            @Html.LabelFor(model => model.EndDate)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Events.EndDate)
-            @Html.ValidationMessageFor(model => model.Events.EndDate)
+            @Html.EditorFor(model => model.EndDate)
+            @Html.ValidationMessageFor(model => model.EndDate)
         </div>
         
         <p>

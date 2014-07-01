@@ -26,11 +26,11 @@ namespace RentaCar
             BundleConfig.RegisterBundles(BundleTable.Bundles);
            
             Database.SetInitializer<RentaCarContext>(null);
-            //HttpContext.Current.Session["Permission"] = 0;
+          
         }
         protected void Session_Start()
         {
-            Session["Permission"] = 0;
+            HttpContext.Current.Session["Permission"] = 0;
         }
     }
 }

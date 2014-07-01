@@ -32,11 +32,51 @@ namespace RentaCar.Controllers
             return View(_VehcileManager.GetAll().ToList());
         
         }
+        [HttpGet]
+        public ActionResult GetCreateVehicle()
+        {  
+                return View("CreateVehicle");
+        }
+
+        [HttpPost]
+        public ActionResult CreateVehicle(Vehicle item)
+        {
+            if (ModelState.IsValid)
+            {
+                _VehcileManager.Add(item);
+                ViewBag.Result = "Kayıt başarıyla eklendi.";
+                return View();
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult GetEditVehicle(int id)
+        {
+            return View(_VehcileManager.Get(id));
+        }
+
+        [HttpPost]
+        public ActionResult EditVehcile(Vehicle it)
+        {
+            if (ModelState.IsValid)
+            {
+               
+                _VehcileManager.Update(it);
+
+                ViewBag.Result = "Kayıt güncellendi";
+                
+            }
+            return RedirectToAction("Index");
+        }
+
        public ActionResult GetMember()
         {
             return View(_MemberManager.GetAll().ToList());
 
         }
+
+
 
     }
 }

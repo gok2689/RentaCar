@@ -1512,6 +1512,8 @@
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\Admin\GetVehicle.cshtml" />
     <Content Include="Views\Admin\GetMember.cshtml" />
+    <Content Include="Views\Admin\CreateVehicle.cshtml" />
+    <Content Include="Views\Admin\GetEditVehicle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -8,14 +8,14 @@
 <h2>GetVehicle</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Yeni araç ekle", "GetCreateVehicle")
 </p>
 <link href="~/Content/style.css" rel="stylesheet" />
 
 <table id="myTable" class="tablesorter">
     <thead>
         <tr>
-
+            
             <th>@Html.DisplayNameFor(a => a.First()._branchName)</th>
             <th>@Html.DisplayNameFor(a => a.First().Model)</th>
             <th>@Html.DisplayNameFor(a => a.First().FuelType)</th>
@@ -30,7 +30,7 @@
         @foreach (var item in Model)
 {
     <tr>
-
+        
         <td>@item._branchName</td>
         <td>@item.Model</td>
         <td>@item.FuelType</td>
@@ -40,9 +40,9 @@
         <td>@item.IsRezerved</td>
         <td>@item.Version</td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Düzenle", "GetEditVehicle", new { id = item.Id }) 
 
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            @Html.ActionLink("Sil", "DeleteVehicle", new { id = item.Id })
         </td>
     </tr>
                     
@@ -53,6 +53,6 @@
 
 </table>
         
-}
+
 
 

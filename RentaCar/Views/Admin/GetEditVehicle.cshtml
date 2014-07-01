@@ -1,0 +1,85 @@
+﻿@model RentaCarEntities.Vehicle
+
+@{
+    ViewBag.Title = "GetEditVehicle";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+@using (Html.BeginForm("EditVehcile", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Araç güncelle</legend>
+
+       @Html.Hidden("id",Model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IsDeleted)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsDeleted)
+            @Html.ValidationMessageFor(model => model.IsDeleted)
+        </div>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Plate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Plate)
+            @Html.ValidationMessageFor(model => model.Plate)
+        </div>
+
+        
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Model)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Model)
+            @Html.ValidationMessageFor(model => model.Model)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FuelType)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FuelType)
+            @Html.ValidationMessageFor(model => model.FuelType)
+        </div>
+
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PricePerDay)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PricePerDay)
+            @Html.ValidationMessageFor(model => model.PricePerDay)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IsRezerved)
+        </div>
+        <div class="editor-field">
+            @Html.CheckBoxFor(model => model.IsRezerved)
+            @Html.ValidationMessageFor(model => model.IsRezerved)
+           
+        </div>
+
+        <p>
+            <input type="submit" value="Güncelle" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Geri dön", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

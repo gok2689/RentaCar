@@ -1,20 +1,20 @@
-﻿@model IEnumerable<RentaCarEntities.Vehicle>
+﻿@model RentaCar.Models.VehicleModel
 <link href="~/Content/style.css" rel="stylesheet" />
 
 <table id="myTable" class="tablesorter">
     <thead>
         <tr>
             
-            <th>@Html.DisplayNameFor(a => a.First()._branchName)</th>
-            <th>@Html.DisplayNameFor(a => a.First().Model)</th>
-            <th>@Html.DisplayNameFor(a => a.First().FuelType)</th>
-            <th>@Html.DisplayNameFor(a => a.First()._brandName)</th>
-            <th>@Html.DisplayNameFor(a=> a.First().PricePerDay)</th>
+            <th>@Html.DisplayNameFor(a=> a.Vehicles.First()._branchName)</th>
+            <th>@Html.DisplayNameFor(a => a.Vehicles.First().Model)</th>
+            <th>@Html.DisplayNameFor(a => a.Vehicles.First().FuelType)</th>
+            <th>@Html.DisplayNameFor(a => a.Vehicles.First()._brandName)</th>
+            <th>@Html.DisplayNameFor(a => a.Vehicles.First().PricePerDay)</th>
             <th>@Html.Label("Rezervasyon")</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Vehicles)//modelin içinde 3 adet model olduğu için böyle yapman gerekir 
         {
             <tr>
                 
@@ -23,8 +23,8 @@
                 <td>@item.FuelType</td>
                 <td>@item._brandName</td>
                 <td>@item.PricePerDay</td>
-                <td>@Html.ActionLink("Rezervasyon yap", "Rezervasyon", 
-                new { @class = "btn btn-xs btn-success" })</td>
+                <td>@Html.ActionLink("Rezervasyon yap", "Rezervasyon",
+             new { vehicleId = item.Id })</td>
             </tr>
         }
     </tbody>
