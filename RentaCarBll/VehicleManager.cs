@@ -70,22 +70,22 @@ namespace RentaCarBll
                          join br in _branchManager.Getall() on v.BranchId equals br.Id
                          select new Vehicle
                          {
-                             _brandName = b.Name,
-                             _branchName=br.Name,
+                             _brandName = b.Name.ToLower(),
+                             _branchName=br.Name.ToLower(),
                              
                              BranchId = v.BranchId,
                              Event = v.Event,
-                             FuelType = v.FuelType,
+                             FuelType = v.FuelType.ToLower(),
                              Id = v.Id,
                              IsDeleted = v.IsDeleted,
-                             Model = v.Model,
+                             Model = v.Model.ToLower(),
                              Plate = v.Plate,
                              PricePerDay = v.PricePerDay,
                              Version = v.Version
                  
                          }).ToList();
 
-            return query.Where(m => m._brandName.Contains(searchText) || m.FuelType.Contains(searchText) || m.Model.Contains(searchText) && m.IsRezerved == false).ToList();
+            return query.Where(m => m._brandName.Contains(searchText.ToLower()) || m.FuelType.Contains(searchText.ToLower()) || m.Model.Contains(searchText.ToLower()) && m.IsRezerved == false).ToList();
 
         }
     }
