@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RentaCarEntities
 {
@@ -15,7 +16,7 @@ namespace RentaCarEntities
             Version = DateTime.Now;
             IsDeleted = false;
         }
-
+        
         public int Id { get; set; }
         public bool IsDeleted { get; set; }
         public System.DateTime Version { get; set; }

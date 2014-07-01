@@ -15,18 +15,20 @@ namespace RentaCarEntities
             this.Event = new HashSet<Event>();
             Version = DateTime.Now;
             IsDeleted = false;
-            IsRezerved = false;
+            
         }
-
+        [Key]
         public int Id { get; set; }
         public bool IsDeleted { get; set; }
         public System.DateTime Version { get; set; }
         [Display(Name="Plaka")]
         public string Plate { get; set; }
+        
         public int BrandId { get; set; }
         public string Model { get; set; }
         [Display(Name="Yakıt tipi")]
         public string FuelType { get; set; }
+        
         public int BranchId { get; set; }
         [Display(Name="Günlük kiralama bedeli")]
         public decimal PricePerDay { get; set; }
