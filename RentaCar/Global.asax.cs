@@ -27,6 +27,7 @@ namespace RentaCar
            
             Database.SetInitializer<RentaCarContext>(null);
           
+          
         }
         protected void Session_Start()
         {

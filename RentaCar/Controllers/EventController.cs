@@ -61,6 +61,7 @@ namespace RentaCar.Controllers
             if (ModelState.IsValid)
             {
                 model.VehicleId = vehicleId;
+            
              
 
                 _manager.Add(model);

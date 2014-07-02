@@ -34,6 +34,7 @@ namespace RentaCar.Controllers
                 {
                     FormsAuthentication.SetAuthCookie(kullanici.Email, true);
                     Session["UserName"] = kullanici.Email;
+                    Session["KulId"] = kullanici.Id;
                     return RedirectToAction("UserIndex", "Member");
 
                 }
