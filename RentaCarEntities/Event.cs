@@ -21,11 +21,11 @@ namespace RentaCarEntities
         public int VehicleId { get; set; }
         
         [Display(Name="Başlangıç tarihi")]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
         public System.DateTime StartDate { get; set; }
       
         [Display(Name="Bitiş Tarihi")]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
 
         public System.DateTime EndDate { get; set; }
 
