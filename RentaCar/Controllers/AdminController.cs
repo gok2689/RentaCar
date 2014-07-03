@@ -18,7 +18,8 @@ namespace RentaCar.Controllers
         [RentaCar.Functions.Permissons]
         public ActionResult Index()
         {
-            return View();
+            return View(new Event() 
+            { StartDate = DateTime.Now, EndDate = DateTime.Now });
         }
 
         public ActionResult LogoutAdmin()
