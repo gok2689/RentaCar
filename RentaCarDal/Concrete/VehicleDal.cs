@@ -19,7 +19,7 @@ namespace RentaCarDal.Concrete
 
         public Vehicle Get(int Id)
         {
-            return context.Vehicles.SingleOrDefault(a => a.Id == Id && a.IsDeleted == false);
+            return context.Vehicles.SingleOrDefault(a => a.Id == Id && a.IsDeleted == false && a.IsRezerved == false);
         }
 
         public void Add(Vehicle item)
@@ -36,8 +36,9 @@ namespace RentaCarDal.Concrete
             ObjectToUpdate.Plate = item.Plate;
             ObjectToUpdate.PricePerDay = item.PricePerDay;
             ObjectToUpdate.Version = item.Version;
-            ObjectToUpdate.BrandId = item.BrandId;
-            ObjectToUpdate.BranchId = item.BranchId;
+            //ObjectToUpdate.BrandId = item.BrandId;
+            //ObjectToUpdate.BranchId = item.BranchId;
+            ObjectToUpdate.IsRezerved = item.IsRezerved;
 
             context.SaveChanges();
         }
