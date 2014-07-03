@@ -81,7 +81,8 @@ namespace RentaCarBll
                              Model = v.Model.ToLower(),
                              Plate = v.Plate,
                              PricePerDay = v.PricePerDay,
-                             Version = v.Version
+                             Version = v.Version,
+                             IsRezerved= v.IsRezerved
                  
                          }).ToList();
 
