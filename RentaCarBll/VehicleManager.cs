@@ -33,7 +33,9 @@ namespace RentaCarBll
                              Model = v.Model,
                              Plate = v.Plate,
                              PricePerDay = v.PricePerDay,
-                             Version = v.Version
+                             Version = v.Version,
+                             IsRezerved= v.IsRezerved,
+                             BrandId = v.BrandId
 
                          }).ToList();
             return query;
