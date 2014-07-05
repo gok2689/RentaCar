@@ -14,6 +14,7 @@ namespace RentaCarEntities
             Version = DateTime.Now;
             IsDeleted = false;
         }
+        [Key]
         public int Id { get; set; }
         public bool IsDeleted { get; set; }
         public System.DateTime Version { get; set; }
@@ -29,8 +30,7 @@ namespace RentaCarEntities
 
         public System.DateTime EndDate { get; set; }
 
-        public virtual Member Member { get; set; }
-        public virtual Vehicle Vehicle { get; set; }
+        
     }
 
     
