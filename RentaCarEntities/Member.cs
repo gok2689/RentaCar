@@ -16,6 +16,7 @@ namespace RentaCarEntities
             Version = DateTime.Now;
             IsDeleted = false;
         }
+       [Key]
     
         public int Id { get; set; }
         public bool IsDeleted { get; set; }
