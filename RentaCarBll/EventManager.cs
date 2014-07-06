@@ -11,6 +11,7 @@ namespace RentaCarBll
   public  class EventManager : IEvent
     {
       EventDal _dal = new EventDal();
+   
         public List<RentaCarEntities.Event> GetAll()
         {
             return _dal.GetAll();

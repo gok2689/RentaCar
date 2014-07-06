@@ -12,10 +12,11 @@ namespace RentaCarBll
    public class VehicleManager : IVehicle
     {
        VehicleDal _dal = new VehicleDal();
+       BrandManager _brandManager = new BrandManager();
+       BranchManager _branchManager = new BranchManager();
         public List<RentaCarEntities.Vehicle> GetAll()
         {
-            BrandManager _brandManager = new BrandManager();
-            BranchManager _branchManager = new BranchManager();
+          
 
             var query = (from v in _dal.GetAll()
                          join b in _brandManager.GetAll() on v.BrandId equals b.Id
@@ -48,11 +49,13 @@ namespace RentaCarBll
 
         public void Add(RentaCarEntities.Vehicle item)
         {
+           
             _dal.Add(item);
         }
 
         public void Update(RentaCarEntities.Vehicle item)
         {
+           
             _dal.Update(item);
         }
 
