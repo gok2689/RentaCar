@@ -24,10 +24,12 @@ namespace RentaCarDal.Concrete
 
         public void Add(Vehicle item)
         {
+            
             context.Vehicles.Add(item);
             context.SaveChanges();
+        
         }
-
+       
         public void Update(Vehicle item)
         {
             Vehicle ObjectToUpdate = context.Vehicles.FirstOrDefault(a => a.Id == item.Id && a.IsDeleted == false);
