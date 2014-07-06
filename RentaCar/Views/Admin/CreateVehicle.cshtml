@@ -52,6 +52,22 @@
             @Html.EditorFor(model => model.PricePerDay)
             @Html.ValidationMessageFor(model => model.PricePerDay)
         </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BranchId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(m=>m.BranchId,(ViewData["Branchs"] as IEnumerable<SelectListItem>),"Lütfen seçim yapınız...")
+            @Html.ValidationMessageFor(model => model._branchName)
+
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BrandId)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(m => m.BrandId, (ViewData["Brands"] as IEnumerable<SelectListItem>), "Lütfen seçim yapınız...")
+            @Html.ValidationMessageFor(model => model._brandName)
+
+        </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.IsRezerved)

@@ -69,6 +69,22 @@
             @Html.ValidationMessageFor(model => model.IsRezerved)
            
         </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model._branchName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model._branchName)
+            @Html.ValidationMessageFor(model => model._branchName)
+
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model._brandName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model._brandName)
+            @Html.ValidationMessageFor(model => model._brandName)
+
+        </div>
 
         <p>
             <input type="submit" value="Güncelle" />

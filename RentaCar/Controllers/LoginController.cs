@@ -32,9 +32,11 @@ namespace RentaCar.Controllers
                 
                 if (result)
                 {
+                    var _currentUser = _manager.GetAll().FirstOrDefault(m => m.Email == kullanici.Email && m.Password == kullanici.Password);
                     FormsAuthentication.SetAuthCookie(kullanici.Email, true);
                     Session["UserName"] = kullanici.Email;
-                    Session["KulId"] = kullanici.Id;
+                    Session["KulId"] = _currentUser.Id;
+                    
                     return RedirectToAction("UserIndex", "Member");
 
                 }

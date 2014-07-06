@@ -13,13 +13,14 @@ namespace RentaCar.Controllers
     public class AdminController : BaseController
     {
         VehicleManager _VehcileManager = new VehicleManager();
+        BrandManager _brandManager = new BrandManager();
+        BranchManager _branchManager = new BranchManager();
         MemberManager _MemberManager = new MemberManager();
 
         [RentaCar.Functions.Permissons]
         public ActionResult Index()
         {
-            return View(new Event() 
-            { StartDate = DateTime.Now, EndDate = DateTime.Now });
+            return View(new Event() { StartDate = DateTime.Now, EndDate = DateTime.Now });
         }
 
         public ActionResult LogoutAdmin()
@@ -31,17 +32,47 @@ namespace RentaCar.Controllers
         public ActionResult GetVehicle()
         {
             return View(_VehcileManager.GetAll().ToList());
-        
+
         }
         [HttpGet]
         public ActionResult GetCreateVehicle()
-        {  
-                return View("CreateVehicle");
+        {
+            ViewData["Brands"] = GetBrandsSelectList();
+            ViewData["Branchs"] = GetBranchsSelectList();
+            return View("CreateVehicle");
+        }
+        public IEnumerable<SelectListItem> GetBranchsSelectList()
+        {
+            List<SelectListItem> SelectList = (from b in _branchManager.Getall()
+                                               select new SelectListItem
+                                               {
+                                                   Selected = false,
+                                                   Text = b.Name,
+                                                   Value = b.Id.ToString()
+                                               }).ToList();
+
+            return SelectList;
+
+        }
+        public IEnumerable<SelectListItem> GetBrandsSelectList()
+        {
+            List<SelectListItem> SelectList = (from b in _brandManager.GetAll()
+                                               select new SelectListItem
+                                               {
+                                                   Selected = false,
+                                                   Text = b.Name,
+                                                   Value = b.Id.ToString()
+                                               }).ToList();
+
+            return SelectList;
+
         }
 
         [HttpPost]
         public ActionResult CreateVehicle(Vehicle item)
         {
+            ViewData["Brands"] = GetBrandsSelectList();
+            ViewData["Branchs"] = GetBranchsSelectList();
             if (ModelState.IsValid)
             {
                 _VehcileManager.Add(item);
@@ -58,20 +89,20 @@ namespace RentaCar.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditVehcile(Vehicle it)
+        public ActionResult EditVehcile(Vehicle item)
         {
             if (ModelState.IsValid)
             {
-               
-                _VehcileManager.Update(it);
+
+                _VehcileManager.Update(item);
 
                 ViewBag.Result = "Kayıt güncellendi";
-                
+
             }
             return RedirectToAction("Index");
         }
 
-       public ActionResult GetMember()
+        public ActionResult GetMember()
         {
             return View(_MemberManager.GetAll().ToList());
 

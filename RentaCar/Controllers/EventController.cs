@@ -61,6 +61,7 @@ namespace RentaCar.Controllers
             if (ModelState.IsValid)
             {
                 model.VehicleId = vehicleId;
+                model.MemberId = Convert.ToInt32(Session["KulId"].ToString());
             
              
 
