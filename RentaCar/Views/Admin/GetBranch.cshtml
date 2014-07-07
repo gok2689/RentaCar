@@ -1,0 +1,44 @@
+﻿@model IEnumerable<RentaCarEntities.Branch>
+
+@{
+    ViewBag.Title = "GetBranch";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+
+<table id="myTable" class="tablesorter">
+    <thead>
+        <tr>
+
+            <th>@Html.DisplayNameFor(a => a.First().Name)</th>
+            <th>@Html.DisplayNameFor(a => a.First().Code)</th>
+            
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>@item.Name</td>
+                <td>@item.Code</td>
+                
+
+                <td>
+                    @Html.ActionLink("Düzenle", "GetEditBranch", new { id = item.Id })
+                    @Html.ActionLink("Sil", "GetDeleteBranch", new { id = item.Id })
+                </td>
+            </tr>
+
+
+        }
+    </tbody>
+
+
+</table>
+<p>
+    @Html.ActionLink("Şube Ekle", "GetCreateBranch")
+</p>

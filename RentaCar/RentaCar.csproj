@@ -1516,6 +1516,13 @@
     <Content Include="Views\Admin\GetEditVehicle.cshtml" />
     <Content Include="Views\Admin\GetCreateMember.cshtml" />
     <Content Include="Views\Admin\GetEditMember.cshtml" />
+    <Content Include="Views\Admin\GetBranch.cshtml" />
+    <Content Include="Views\Admin\GetCreateBranch.cshtml" />
+    <Content Include="Views\Admin\GetEditBranch.cshtml" />
+    <Content Include="Views\Admin\GetBrand.cshtml" />
+    <Content Include="Views\Admin\GetCreateBrand.cshtml" />
+    <Content Include="Views\Admin\GetEditBrand.cshtml" />
+    <Content Include="Views\Admin\GetDeleteBranch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

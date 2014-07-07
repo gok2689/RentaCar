@@ -169,16 +169,117 @@ namespace RentaCar.Controllers
             {
                 _MemberManager.Add(member);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("GetMember");
         }
         [HttpPost]
         public ActionResult DeleteMember(int Id)
         {
+            
+            
+                _MemberManager.Delete(Id);
+            
+            return RedirectToAction("GetMember");
+        }
+        [HttpGet]
+        public ActionResult GetBranch()
+        {
+            return View(_branchManager.Getall().ToList());
+        }
+        [HttpGet]
+        public ActionResult GetCreateBranch()
+        {
+            return View();
+        }
+        [HttpGet]
+        public ActionResult GetEditBranch(int Id)
+        {
+            return View(_branchManager.Get(Id));
+        }
+        [HttpGet]
+        public ActionResult GetDeleteBranch(int Id)
+        {
+            _branchManager.Get(Id);
+            return View("DeleteBranch");
+        }
+        
+        [HttpPost]
+        public ActionResult EditBranch(Branch item)
+        {
             if (ModelState.IsValid)
             {
-                _MemberManager.Delete(Id);
+                _branchManager.Update(item);
             }
-            return RedirectToAction("GetMember");
+            return RedirectToAction("GetBranch");
+        }
+
+        [HttpPost]
+        public ActionResult CreateBranch(Branch item)
+        {
+            if (ModelState.IsValid)
+            {
+                _branchManager.Add(item);
+            }
+            return RedirectToAction("GetBranch");
+        }
+        [HttpPost]
+        public ActionResult DeleteBranch(int Id)
+        {
+            if (ModelState.IsValid)
+            {
+                _branchManager.Delete(Id);
+            } 
+            
+            return RedirectToAction("GetBranch");
+        }
+        [HttpGet]
+        public ActionResult GetBrand()
+        {
+            return View(_brandManager.GetAll().ToList());
+        }
+        [HttpGet]
+        public ActionResult GetCreateBrand()
+        {
+            return View();
+        }
+        [HttpGet]
+        public ActionResult GetEditBrand(int Id)
+        {
+            return View(_brandManager.Get(Id));
+        }
+        [HttpGet]
+        public ActionResult GetDeleteBrand(int Id)
+        {
+            _brandManager.Get(Id);
+            return View("DeleteBrand");
+        }
+
+        [HttpPost]
+        public ActionResult EditBranch(Brand item)
+        {
+            if (ModelState.IsValid)
+            {
+                _brandManager.Update(item);
+            }
+            return RedirectToAction("GetBrand");
+        }
+
+        [HttpPost]
+        public ActionResult CreateBrand(Brand item)
+        {
+            if (ModelState.IsValid)
+            {
+                _brandManager.Add(item);
+            }
+            return RedirectToAction("GetBrand");
+        }
+        [HttpPost]
+        public ActionResult DeleteBrand(int Id)
+        {
+           
+            
+                _brandManager.Delete(Id);
+            
+            return RedirectToAction("GetBrand");
         }
     }
 }

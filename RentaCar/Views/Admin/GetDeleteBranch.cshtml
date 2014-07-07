@@ -1,0 +1,37 @@
+﻿@model RentaCarEntities.Branch
+
+@{
+    ViewBag.Title = "GetDeleteBranch";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+<h3>Silmek istediğinize eminmisiniz?</h3>
+
+<fieldset>
+    
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Code)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Code)
+    </div>
+</fieldset>
+      @using (Html.BeginForm("DeleteBranch", "Admin", FormMethod.Post))
+{
+    @*@Html.Hidden("Id",Model.Id)*@
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Sil" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

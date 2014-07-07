@@ -1,0 +1,45 @@
+﻿@model RentaCarEntities.Branch
+
+@{
+    ViewBag.Title = "GetCreateBranch";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>GetCreateBranch</h2>
+
+@using (Html.BeginForm("CreateBranch","Admin",FormMethod.Post)) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+       
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Code)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Code)
+            @Html.ValidationMessageFor(model => model.Code)
+        </div>
+
+        <p>
+            <input type="submit" value="Ekle" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Geri dön", "GetBranch")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
