@@ -26,18 +26,12 @@ namespace RentaCar.Controllers
 
                 _manager.Add(model);
                 RedirectToAction("Info", "Event");
-                ViewBag.Result = "İşleminiz gerçekleişyor Bilgileriniz Mail adressinize gönderilecektir";
+              
             }
 
             return View("Index", model);
         }
-        [HttpGet]
-        public ViewResult Info(Event model)
-        {
-            return View();
-
-
-        }
+      
         [HttpPost]
         public PartialViewResult Filtre(string searchText)
         {
@@ -67,10 +61,10 @@ namespace RentaCar.Controllers
 
                 _manager.Add(model);
                 ViewBag.Bildiri = "İşleminiz Onay için beklemektedir Bilgileriniz Mail Adressinize gönderilecektir ";
-                RedirectToAction("UserIndex", "Member");
+               
             }
-            ViewBag.Hata = "Bir hata oluşru";
-            return View("Rezervasyon");
+            
+            return RedirectToAction("UserIndex", "Member");
 
 
 

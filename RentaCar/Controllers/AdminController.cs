@@ -20,7 +20,7 @@ namespace RentaCar.Controllers
         [RentaCar.Functions.Permissons]
         public ActionResult Index()
         {
-            return View(new Event() { StartDate = DateTime.Now, EndDate = DateTime.Now });
+            return View();
         }
 
         public ActionResult LogoutAdmin()
@@ -28,12 +28,13 @@ namespace RentaCar.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
-
+        [RentaCar.Functions.Permissons]
         public ActionResult GetVehicle()
         {
             return View(_VehcileManager.GetAll().ToList());
 
         }
+        [RentaCar.Functions.Permissons]
         [HttpGet]
         public ActionResult GetCreateVehicle()
         {
@@ -67,7 +68,7 @@ namespace RentaCar.Controllers
             return SelectList;
 
         }
-
+        [RentaCar.Functions.Permissons]
         [HttpPost]
         public ActionResult CreateVehicle(Vehicle item)
         {
@@ -81,16 +82,20 @@ namespace RentaCar.Controllers
             }
             return RedirectToAction("Index");
         }
-
+        [RentaCar.Functions.Permissons]
         [HttpGet]
         public ActionResult GetEditVehicle(int id)
         {
+            ViewData["Brands"] = GetBrandsSelectList();
+            ViewData["Branchs"] = GetBranchsSelectList();
             return View(_VehcileManager.Get(id));
         }
-
+        [RentaCar.Functions.Permissons]
         [HttpPost]
         public ActionResult EditVehcile(Vehicle item)
         {
+            ViewData["Brands"] = GetBrandsSelectList();
+            ViewData["Branchs"] = GetBranchsSelectList();
             if (ModelState.IsValid)
             {
 
@@ -102,13 +107,78 @@ namespace RentaCar.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult GetDeleteVehicle(int Id)
+        {
+            _VehcileManager.Get(Id);
+            return View("DeleteVehicle");
+
+        }
+
+        public ActionResult DeleteVehicle(int Id)
+        {
+            if (ModelState.IsValid)
+            {
+                _VehcileManager.Delete(Id);
+                
+                
+            }
+            
+            return RedirectToAction("Index");
+        
+        }
+        [RentaCar.Functions.Permissons]
+        [HttpGet]
         public ActionResult GetMember()
         {
             return View(_MemberManager.GetAll().ToList());
 
         }
+        [RentaCar.Functions.Permissons]
+        [HttpGet]
+        public ActionResult GetCreateMember()
+        {
+            return View();
+        }
+        [HttpGet]
+        public ActionResult GetEditMember(int Id)
+        {
+            return View(_MemberManager.Get(Id));
+        }
+        [HttpGet]
+        public ActionResult GetDeleteMember(int Id)
+        {
+            _MemberManager.Get(Id);
+            return View("DeleteMember");
+        }
 
-
-
+        
+        [HttpPost]
+        public ActionResult EditMember(Member item)
+        {
+            if (ModelState.IsValid)
+            {
+                _MemberManager.Update(item);
+            }
+            return RedirectToAction("GetMember");
+        }
+        [RentaCar.Functions.Permissons]
+        [HttpPost]
+        public ActionResult CreateMember(Member member)
+        {
+            if (ModelState.IsValid)
+            {
+                _MemberManager.Add(member);
+            }
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public ActionResult DeleteMember(int Id)
+        {
+            if (ModelState.IsValid)
+            {
+                _MemberManager.Delete(Id);
+            }
+            return RedirectToAction("GetMember");
+        }
     }
 }

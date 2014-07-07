@@ -57,7 +57,7 @@
         </div>
         <div class="editor-field">
             @Html.DropDownListFor(m=>m.BranchId,(ViewData["Branchs"] as IEnumerable<SelectListItem>),"Lütfen seçim yapınız...")
-            @Html.ValidationMessageFor(model => model._branchName)
+            @Html.ValidationMessageFor(model => model.BranchId)
 
         </div>
         <div class="editor-label">
@@ -65,7 +65,7 @@
         </div>
         <div class="editor-field">
             @Html.DropDownListFor(m => m.BrandId, (ViewData["Brands"] as IEnumerable<SelectListItem>), "Lütfen seçim yapınız...")
-            @Html.ValidationMessageFor(model => model._brandName)
+            @Html.ValidationMessageFor(model => model.BrandId)
 
         </div>
 

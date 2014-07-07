@@ -1514,6 +1514,8 @@
     <Content Include="Views\Admin\GetMember.cshtml" />
     <Content Include="Views\Admin\CreateVehicle.cshtml" />
     <Content Include="Views\Admin\GetEditVehicle.cshtml" />
+    <Content Include="Views\Admin\GetCreateMember.cshtml" />
+    <Content Include="Views\Admin\GetEditMember.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
