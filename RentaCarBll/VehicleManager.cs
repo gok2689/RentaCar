@@ -27,7 +27,7 @@ namespace RentaCarBll
                              _branchName = br.Name,
 
                              BranchId = v.BranchId,
-                             Event = v.Event,
+                             
                              FuelType = v.FuelType,
                              Id = v.Id,
                              IsDeleted = v.IsDeleted,
@@ -79,7 +79,7 @@ namespace RentaCarBll
                              _branchName=br.Name.ToLower(),
                              
                              BranchId = v.BranchId,
-                             Event = v.Event,
+                            
                              FuelType = v.FuelType.ToLower(),
                              Id = v.Id,
                              IsDeleted = v.IsDeleted,
