@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RentaCarEntities
 {
@@ -18,7 +19,9 @@ namespace RentaCarEntities
         public int Id { get; set; }
         public bool IsDeleted { get; set; }
         public System.DateTime Version { get; set; }
+        [Display(Name="Kullanıcı")]
         public int MemberId { get; set; }
+        [Display(Name="Araç")]
         public int VehicleId { get; set; }
         
         [Display(Name="Başlangıç tarihi")]
@@ -29,7 +32,14 @@ namespace RentaCarEntities
         [DataType(DataType.Date)]
 
         public System.DateTime EndDate { get; set; }
+        [Display(Name="MailAdresi")]
+        [NotMapped]
+        public string _kulEmail { get; set; }
+        [NotMapped]
+        [Display(Name="AraçMarkası")]
+        public string _VehicleName { get; set; }
 
+       
         
     }
 

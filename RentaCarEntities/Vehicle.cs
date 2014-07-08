@@ -12,7 +12,7 @@ namespace RentaCarEntities
     {
         public Vehicle()
         {
-            this.Event = new HashSet<Event>();
+           
             Version = DateTime.Now;
             IsDeleted = false;
             
@@ -23,12 +23,12 @@ namespace RentaCarEntities
         public System.DateTime Version { get; set; }
         [Display(Name="Plaka")]
         public string Plate { get; set; }
-        
+        [Display(Name="Marka")]
         public int BrandId { get; set; }
         public string Model { get; set; }
         [Display(Name="Yakıt tipi")]
         public string FuelType { get; set; }
-        
+        [Display(Name="Şube")]
         public int BranchId { get; set; }
         [Display(Name="Günlük kiralama bedeli")]
         public decimal PricePerDay { get; set; }
@@ -40,6 +40,6 @@ namespace RentaCarEntities
         [Display(Name="Şube")]
         public string _branchName { get; set; }
         public bool IsRezerved { get; set; }
-        public virtual ICollection<Event> Event { get; set; }
+        
     }
 }
