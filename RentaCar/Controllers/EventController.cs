@@ -25,7 +25,7 @@ namespace RentaCar.Controllers
             {
 
                 _manager.Add(model);
-                RedirectToAction("Info", "Event");
+                
               
             }
 

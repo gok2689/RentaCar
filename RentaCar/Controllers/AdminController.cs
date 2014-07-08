@@ -16,6 +16,7 @@ namespace RentaCar.Controllers
         BrandManager _brandManager = new BrandManager();
         BranchManager _branchManager = new BranchManager();
         MemberManager _MemberManager = new MemberManager();
+        EventManager _eventManager = new EventManager();
 
         [RentaCar.Functions.Permissons]
         public ActionResult Index()
@@ -281,5 +282,17 @@ namespace RentaCar.Controllers
             
             return RedirectToAction("GetBrand");
         }
+        [HttpGet]
+        public ActionResult GetEvent()
+        {
+            return View(_eventManager.GetAll().ToList());
+        }
+        [HttpGet]
+        public ActionResult GetEditEvent(int Id)
+        {
+            return View(_eventManager.Get(Id));
+        }
+        [HttpPost]
+        public ActionResult EditEvent(int Id)
     }
 }

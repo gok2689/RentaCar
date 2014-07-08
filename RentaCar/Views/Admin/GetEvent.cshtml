@@ -1,0 +1,44 @@
+﻿@model IEnumerable<RentaCarEntities.Event>
+
+@{
+    ViewBag.Title = "GetEvent";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>GetEvent</h2>
+
+
+<table id="myTable" class="tablesorter">
+    <thead>
+        <tr>
+            
+            <th>@Html.DisplayNameFor(a=> a.First()._VehicleName)</th>
+            <th>@Html.DisplayNameFor(a=> a.First()._kulEmail)</th>
+            <th>@Html.DisplayNameFor(a => a.First().StartDate)</th>
+            <th>@Html.DisplayNameFor(a => a.First().EndDate)</th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item._VehicleName</td>
+                <td>@item._kulEmail</td>
+                <td>@item.StartDate</td>
+                <td>@item.EndDate</td>
+
+
+                <td>
+                    @Html.ActionLink("Onayla", "GetEditEvent", new { id = item.Id })
+                    @Html.ActionLink("Sil", "DeleteEvent", new { id = item.Id })
+                </td>
+            </tr>
+
+
+        }
+    </tbody>
+
+
+</table>

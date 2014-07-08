@@ -1,0 +1,34 @@
+﻿@model RentaCarEntities.Event
+
+@{
+    ViewBag.Title = "GetEditEvent";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>GetEditEvent</h2>
+
+@using (Html.BeginForm("EditEvent","Admin",FormMethod.Post)) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Onayla</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+     
+       
+
+        <p>
+            <input type="submit" value="Onayla" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Geri Dön", "GetEvent")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
