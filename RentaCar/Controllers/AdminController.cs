@@ -7,6 +7,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Net.Mail; 
+using System.Net.Security;
+using System.Net.Sockets;
 
 namespace RentaCar.Controllers
 {
@@ -293,6 +296,41 @@ namespace RentaCar.Controllers
             return View(_eventManager.Get(Id));
         }
         [HttpPost]
-        public ActionResult EditEvent(int Id)
+        public ActionResult EditEvent(Event item)
+        {
+
+            if (ModelState.IsValid)
+            {
+                MailMessage Mesaj = new MailMessage();
+                //C#ın mail göndermek için tasarladığı mailmessage nesnesini kullanıyoruz
+                try//eğer hata alırsak program patlamasın hata mesajı versin bi
+                {
+                    TcpClient Tcpclient = new TcpClient();
+                    Tcpclient.Connect("pop.gmail.com", 995);
+                    //protokolü kullanmak için server ve pop numarası seçelim, gmail için 995.
+                    //gmail bu şekilde göndermeleri desteklediğinden gmaili 
+                    //kullanmakta fayda var öncelikle       
+                    SslStream Guvenlik = new SslStream(Tcpclient.GetStream());
+                    Guvenlik.AuthenticateAsClient("pop.gmail.com");
+                    MailMessage mail = new MailMessage();
+                    SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+                    mail.From = new MailAddress("goktug.dulkan@gmail.com");
+                    mail.To.Add("gok2689@hotmail.com");
+                    mail.Subject = "Bilgi"; mail.Body = "İşleminiz Onaylandı";
+                    SmtpServer.Port = 587;//port numarası
+                    SmtpServer.Credentials = new System.Net.NetworkCredential("goktug.dulkan",
+                                                                              "quickshare1");
+                    // (@gmail demenize gerek yok, herşey gmaile girişteki gibi)        
+                    SmtpServer.EnableSsl = true;
+                    SmtpServer.Send(mail);//mail gönderildi mesajı
+                }
+                catch (Exception ex)
+                {
+                    ex.Message.ToString();
+                }
+                
+            }
+            return RedirectToAction("GetEvent");
+        }
     }
 }
