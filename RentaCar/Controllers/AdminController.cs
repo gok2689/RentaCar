@@ -319,7 +319,7 @@ namespace RentaCar.Controllers
                     mail.Subject = "Bilgi"; mail.Body = "İşleminiz Onaylandı";
                     SmtpServer.Port = 587;//port numarası
                     SmtpServer.Credentials = new System.Net.NetworkCredential("goktug.dulkan",
-                                                                              "quickshare1");
+                                                                              "password");
                     // (@gmail demenize gerek yok, herşey gmaile girişteki gibi)        
                     SmtpServer.EnableSsl = true;
                     SmtpServer.Send(mail);//mail gönderildi mesajı
