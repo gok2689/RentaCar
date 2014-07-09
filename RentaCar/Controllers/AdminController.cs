@@ -296,11 +296,15 @@ namespace RentaCar.Controllers
             return View(_eventManager.Get(Id));
         }
         [HttpPost]
-        public ActionResult EditEvent(Event item)
+        public ActionResult EditEvent(Event item,int Id)
         {
+            
+            var result =_eventManager.GetAll().Where(a=> a._kulEmail == item._kulEmail).ToString();
+     
 
             if (ModelState.IsValid)
             {
+                
                 MailMessage Mesaj = new MailMessage();
                 //C#ın mail göndermek için tasarladığı mailmessage nesnesini kullanıyoruz
                 try//eğer hata alırsak program patlamasın hata mesajı versin bi
@@ -315,11 +319,12 @@ namespace RentaCar.Controllers
                     MailMessage mail = new MailMessage();
                     SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
                     mail.From = new MailAddress("goktug.dulkan@gmail.com");
-                    mail.To.Add("gok2689@hotmail.com");
+                    mail.To.Add(result.ToString());
+
                     mail.Subject = "Bilgi"; mail.Body = "İşleminiz Onaylandı";
                     SmtpServer.Port = 587;//port numarası
                     SmtpServer.Credentials = new System.Net.NetworkCredential("goktug.dulkan",
-                                                                              "password");
+                                                                              "quickshare1");
                     // (@gmail demenize gerek yok, herşey gmaile girişteki gibi)        
                     SmtpServer.EnableSsl = true;
                     SmtpServer.Send(mail);//mail gönderildi mesajı
@@ -329,6 +334,20 @@ namespace RentaCar.Controllers
                     ex.Message.ToString();
                 }
                 
+            }
+            return RedirectToAction("GetEvent");
+        }
+        [HttpGet]
+        public ActionResult GetDeleteEvent(int Id)
+        {
+            return View( _eventManager.Get(Id));
+        }
+        [HttpPost]
+        public ActionResult DeleteEvent(int Id)
+        {
+            if (ModelState.IsValid)
+            {
+                _eventManager.Delete(Id);
             }
             return RedirectToAction("GetEvent");
         }
