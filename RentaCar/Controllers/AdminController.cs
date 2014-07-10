@@ -73,19 +73,7 @@ namespace RentaCar.Controllers
             return SelectList;
 
         }
-        public IEnumerable<SelectListItem> GetEmailsSelectList()
-        {
-            List<SelectListItem> SelectList = (from m in _eventManager.GetAll()
-                                               select new SelectListItem
-                                               {
-                                                   Selected = false,
-                                                   Text = m._kulEmail,
-                                                   Value = m.Id.ToString()
-                                               }).ToList();
-
-            return SelectList;
-
-        }
+ 
         [RentaCar.Functions.Permissons]
         [HttpPost]
         public ActionResult CreateVehicle(Vehicle item)
@@ -307,7 +295,7 @@ namespace RentaCar.Controllers
         [HttpGet]
         public ActionResult GetEditEvent(int Id)
         {
-            ViewData["Members"] = GetEmailsSelectList();
+           
             return View(_eventManager.Get(Id));
         }
         [HttpPost]
@@ -336,7 +324,8 @@ namespace RentaCar.Controllers
                     mail.From = new MailAddress("goktug.dulkan@gmail.com");
                     mail.To.Add(member.Email);
                     mail.IsBodyHtml = true;
-                    mail.Subject = "Bilgi"; mail.Body = "Sayın <strong>"+member.NameSurName+"</strong>, kiralama talebinde bulunduğunuz <strong>"+vehicle.Plate+"</strong> plakalı <strong>"+vehicle.Model+"</strong> marka araç onaylanmıştır.Aracı <strong>"+item.EndDate.ToShortDateString()+"</strong> tarihine kadar teslim etmeniz gerekmektedir.Göstermiş olduğunuz ilgi için teşekkür ederiz.Ücretiniz "+totalPrice.ToString("0.00")+" TL'dir.<br/>İyi günler...";
+                    mail.Subject = "Bilgi"; 
+                    mail.Body = "Sayın <strong>"+member.NameSurName+"</strong>, kiralama talebinde bulunduğunuz <strong>"+vehicle.Plate+"</strong> plakalı <strong>"+vehicle.Model+"</strong> marka araç onaylanmıştır.Aracı <strong>"+item.EndDate.ToShortDateString()+"</strong> tarihine kadar teslim etmeniz gerekmektedir.Göstermiş olduğunuz ilgi için teşekkür ederiz.Ücretiniz "+totalPrice.ToString("0.00")+" TL'dir.<br/>İyi günler...";
                     SmtpServer.Port = 587;
                     SmtpServer.Credentials = new System.Net.NetworkCredential("gdulkan@gmail.com",
                           "goktugdulkan");
