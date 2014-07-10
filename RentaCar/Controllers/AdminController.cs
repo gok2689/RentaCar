@@ -10,6 +10,7 @@ using System.Web.Security;
 using System.Net.Mail; 
 using System.Net.Security;
 using System.Net.Sockets;
+using RentaCar.Models;
 
 namespace RentaCar.Controllers
 {
@@ -67,6 +68,19 @@ namespace RentaCar.Controllers
                                                    Selected = false,
                                                    Text = b.Name,
                                                    Value = b.Id.ToString()
+                                               }).ToList();
+
+            return SelectList;
+
+        }
+        public IEnumerable<SelectListItem> GetEmailsSelectList()
+        {
+            List<SelectListItem> SelectList = (from m in _eventManager.GetAll()
+                                               select new SelectListItem
+                                               {
+                                                   Selected = false,
+                                                   Text = m._kulEmail,
+                                                   Value = m.Id.ToString()
                                                }).ToList();
 
             return SelectList;
@@ -293,41 +307,42 @@ namespace RentaCar.Controllers
         [HttpGet]
         public ActionResult GetEditEvent(int Id)
         {
+            ViewData["Members"] = GetEmailsSelectList();
             return View(_eventManager.Get(Id));
         }
         [HttpPost]
-        public ActionResult EditEvent(Event item,int Id)
+        public ActionResult EditEvent(Event item)
         {
             
-            var result =_eventManager.GetAll().Where(a=> a._kulEmail == item._kulEmail).ToString();
-     
 
+            
             if (ModelState.IsValid)
             {
                 
                 MailMessage Mesaj = new MailMessage();
-                //C#ın mail göndermek için tasarladığı mailmessage nesnesini kullanıyoruz
-                try//eğer hata alırsak program patlamasın hata mesajı versin bi
+               
+                try
                 {
+                    var member = _MemberManager.Get(item.MemberId);
+                    var vehicle = _VehcileManager.Get(item.VehicleId);
+                    TimeSpan fark = item.EndDate- item.StartDate;
+                    decimal totalPrice = Convert.ToDecimal(fark.Days) * vehicle.PricePerDay;
                     TcpClient Tcpclient = new TcpClient();
-                    Tcpclient.Connect("pop.gmail.com", 995);
-                    //protokolü kullanmak için server ve pop numarası seçelim, gmail için 995.
-                    //gmail bu şekilde göndermeleri desteklediğinden gmaili 
-                    //kullanmakta fayda var öncelikle       
+                    Tcpclient.Connect("pop.gmail.com", 995);       
                     SslStream Guvenlik = new SslStream(Tcpclient.GetStream());
                     Guvenlik.AuthenticateAsClient("pop.gmail.com");
                     MailMessage mail = new MailMessage();
                     SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
                     mail.From = new MailAddress("goktug.dulkan@gmail.com");
-                    mail.To.Add(result.ToString());
-
-                    mail.Subject = "Bilgi"; mail.Body = "İşleminiz Onaylandı";
-                    SmtpServer.Port = 587;//port numarası
-                    SmtpServer.Credentials = new System.Net.NetworkCredential("goktug.dulkan",
-                                                                              "quickshare1");
-                    // (@gmail demenize gerek yok, herşey gmaile girişteki gibi)        
+                    mail.To.Add(member.Email);
+                    mail.IsBodyHtml = true;
+                    mail.Subject = "Bilgi"; mail.Body = "Sayın <strong>"+member.NameSurName+"</strong>, kiralama talebinde bulunduğunuz <strong>"+vehicle.Plate+"</strong> plakalı <strong>"+vehicle.Model+"</strong> marka araç onaylanmıştır.Aracı <strong>"+item.EndDate.ToShortDateString()+"</strong> tarihine kadar teslim etmeniz gerekmektedir.Göstermiş olduğunuz ilgi için teşekkür ederiz.Ücretiniz "+totalPrice.ToString("0.00")+" TL'dir.<br/>İyi günler...";
+                    SmtpServer.Port = 587;
+                    SmtpServer.Credentials = new System.Net.NetworkCredential("gdulkan@gmail.com",
+                          "goktugdulkan");
+                          
                     SmtpServer.EnableSsl = true;
-                    SmtpServer.Send(mail);//mail gönderildi mesajı
+                    SmtpServer.Send(mail);
                 }
                 catch (Exception ex)
                 {

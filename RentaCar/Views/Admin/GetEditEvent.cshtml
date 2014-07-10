@@ -15,10 +15,11 @@
         <legend>Onayla</legend>
 
         @Html.HiddenFor(model => model.Id)
-
+        @Html.HiddenFor(m=>m.MemberId)
+        @Html.HiddenFor(m=>m.VehicleId)
+        @Html.HiddenFor(m=>m.EndDate)
+        @Html.HiddenFor(m=>m.StartDate)
     
-       
-
         <p>
             <input type="submit" value="Onayla" />
         </p>
